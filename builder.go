@@ -1,5 +1,7 @@
 package qforge
 
-func buildQuery(server DatabaseServer, selectColumnIds []string) string {
-	return string(server.ServerType())
+import "fmt"
+
+func buildQuery(forge *QForge, selectColumnIds []string) string {
+	return fmt.Sprintf("%v", forge)
 }

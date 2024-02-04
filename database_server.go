@@ -13,25 +13,25 @@ type DatabaseServer interface {
 }
 
 type SnowflakeDatabaseServer struct {
-	Databases []Database
+	Databases []*Database
 }
 
-func (s *SnowflakeDatabaseServer) CreateGraph() Graph {
-	return CreateGraph(s.Databases)
+func (s SnowflakeDatabaseServer) CreateGraph() Graph {
+	return createGraph(s.Databases)
 }
 
-func (s *SnowflakeDatabaseServer) ServerType() DatabaseServerType {
+func (s SnowflakeDatabaseServer) ServerType() DatabaseServerType {
 	return SnowflakeDBType
 }
 
 type PostgresDatabaseServer struct {
-	Databases []Database
+	Databases []*Database
 }
 
-func (s *PostgresDatabaseServer) CreateGraph() Graph {
-	return CreateGraph(s.Databases)
+func (s PostgresDatabaseServer) CreateGraph() Graph {
+	return createGraph(s.Databases)
 }
 
-func (s *PostgresDatabaseServer) ServerType() DatabaseServerType {
+func (s PostgresDatabaseServer) ServerType() DatabaseServerType {
 	return PostgresDBType
 }

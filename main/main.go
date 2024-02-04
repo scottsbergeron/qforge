@@ -7,16 +7,16 @@ import (
 
 func main() {
 	server := qforge.PostgresDatabaseServer{
-		Databases: []qforge.Database{
+		Databases: []*qforge.Database{
 			{
 				Name: "school_db",
-				Schemas: []qforge.DatabaseSchema{
+				Schemas: []*qforge.DatabaseSchema{
 					{
 						Name: "public",
-						Tables: []qforge.Table{
+						Tables: []*qforge.Table{
 							{
 								Name: "students",
-								Columns: []qforge.Column{
+								Columns: []*qforge.Column{
 									{
 										Id:       "student.id",
 										Name:     "id",
@@ -46,7 +46,7 @@ func main() {
 							},
 							{
 								Name: "teachers",
-								Columns: []qforge.Column{
+								Columns: []*qforge.Column{
 									{
 										Id:       "teacher.id",
 										Name:     "id",
@@ -73,10 +73,10 @@ func main() {
 					},
 					{
 						Name: "school_data",
-						Tables: []qforge.Table{
+						Tables: []*qforge.Table{
 							{
 								Name: "courses",
-								Columns: []qforge.Column{
+								Columns: []*qforge.Column{
 									{
 										Id:       "course.id",
 										Name:     "id",
@@ -96,7 +96,7 @@ func main() {
 							},
 							{
 								Name: "enrollments",
-								Columns: []qforge.Column{
+								Columns: []*qforge.Column{
 									{
 										Id:       "enrollment.id",
 										Name:     "id",
@@ -126,9 +126,7 @@ func main() {
 		},
 	}
 
-	forge := qforge.QForge{
-		Server: &server,
-	}
+	forge := qforge.MakeQForge(server)
 
 	fmt.Println(forge.BuildQuery([]string{"course.id"}))
 }

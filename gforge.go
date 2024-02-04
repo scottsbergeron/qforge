@@ -1,9 +1,17 @@
 package qforge
 
 type QForge struct {
-	Server DatabaseServer
+	server DatabaseServer
+	graph  Graph
 }
 
 func (q *QForge) BuildQuery(selectColumnIds []string) string {
-	return buildQuery(q.Server, selectColumnIds)
+	return buildQuery(q, selectColumnIds)
+}
+
+func MakeQForge(server DatabaseServer) *QForge {
+	return &QForge{
+		server: server,
+		graph:  server.CreateGraph(),
+	}
 }
