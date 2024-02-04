@@ -128,5 +128,5 @@ func main() {
 
 	forge := qforge.MakeQForge(server)
 
-	fmt.Println(forge.BuildQuery([]string{"course.id"}))
+	fmt.Println(forge.BuildQuery("\"school_db\".\"public\".\"teachers\"", []string{"course.id"}))
 }
