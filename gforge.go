@@ -1,5 +1,9 @@
 package qforge
 
-func BuildQuery() string {
-	return buildQuery()
+type QForge struct {
+	Server DatabaseServer
+}
+
+func (q *QForge) BuildQuery(selectColumnIds []string) string {
+	return buildQuery(q.Server, selectColumnIds)
 }

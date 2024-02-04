@@ -1,5 +1,5 @@
 package qforge
 
-func buildQuery() string {
-	return "we"
+func buildQuery(server DatabaseServer, selectColumnIds []string) string {
+	return string(server.ServerType())
 }
